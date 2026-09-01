@@ -15,22 +15,18 @@ for (int i = 0; i < numDepartments; i++) {
         maxVisits = visits;
         maxDeptIndex = i;
     }
-            else {
-                System.out.println("Department " + (i + 1)
-                        + ": Operations Normal. Visits: " + visits);
-            }
-        }
-
-        double avgVisits = 0.0;
-
-        if (numDepartments > 0) {
-            avgVisits = (double) totalVisits / numDepartments;
-        }
-
-        System.out.println("---------------------------------------------");
-        System.out.println("Total High-Demand Departments: " + highDemandCount);
-        System.out.println("Average Daily Visits per Department: " + avgVisits);
-    }
+            if (visits > capacityLimit * 1.5) {
+    highDemandCount++;
+    System.out.println("Department " + (i + 1)
+            + ": CRITICAL Demand! Visits: " + visits);
+} else if (visits > capacityLimit) {
+    highDemandCount++;
+    System.out.println("Department " + (i + 1)
+            + ": High Demand Alert! Visits: " + visits);
+} else {
+    System.out.println("Department " + (i + 1)
+            + ": Operations Normal. Visits: " + visits);
+}
 
     public static void main(String[] args) {
 
