@@ -4,20 +4,18 @@ public class HealthcareServiceAnalysis {
 
     public static void analyzeHealthcareServiceDemand(int[] patientVisits, int capacityLimit) {
 
-        int totalVisits = 0;
-        int highDemandCount = 0;
-        int numDepartments = patientVisits.length;
+      int maxVisits = 0;
+int maxDeptIndex = -1;
 
-        for (int i = 0; i < numDepartments; i++) {
+for (int i = 0; i < numDepartments; i++) {
+    int visits = patientVisits[i];
+    totalVisits += visits;
 
-            int visits = patientVisits[i];
-            totalVisits += visits;
-
-            if (visits > capacityLimit) {
-                highDemandCount++;
-                System.out.println("Department " + (i + 1)
-                        + ": High Demand Alert! Visits: " + visits);
-            } else {
+    if (visits > maxVisits) {
+        maxVisits = visits;
+        maxDeptIndex = i;
+    }
+            else {
                 System.out.println("Department " + (i + 1)
                         + ": Operations Normal. Visits: " + visits);
             }
