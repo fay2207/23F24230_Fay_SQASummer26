@@ -1,0 +1,46 @@
+package healthcareserviceanalysis;
+
+public class HealthcareServiceAnalysis {
+
+    public static void analyzeHealthcareServiceDemand(int[] patientVisits, int capacityLimit) {
+
+        int totalVisits = 0;
+        int highDemandCount = 0;
+        int numDepartments = patientVisits.length;
+
+        for (int i = 0; i < numDepartments; i++) {
+
+            int visits = patientVisits[i];
+            totalVisits += visits;
+
+            if (visits > capacityLimit) {
+                highDemandCount++;
+                System.out.println("Department " + (i + 1)
+                        + ": High Demand Alert! Visits: " + visits);
+            } else {
+                System.out.println("Department " + (i + 1)
+                        + ": Operations Normal. Visits: " + visits);
+            }
+        }
+
+        double avgVisits = 0.0;
+
+        if (numDepartments > 0) {
+            avgVisits = (double) totalVisits / numDepartments;
+        }
+
+        System.out.println("---------------------------------------------");
+        System.out.println("Total High-Demand Departments: " + highDemandCount);
+        System.out.println("Average Daily Visits per Department: " + avgVisits);
+    }
+
+    public static void main(String[] args) {
+
+        int[] patientVisitsData = {65, 40, 80, 25};
+        int capacityThreshold = 50;
+
+        System.out.println("=== HEALTHCARE SERVICE DEMAND ANALYSIS REPORT ===");
+
+        analyzeHealthcareServiceDemand(patientVisitsData, capacityThreshold);
+    }
+}
